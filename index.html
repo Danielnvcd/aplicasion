@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuning Repro Stages</title>
+    <link rel="stylesheet" href="css.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        .progress-bar {
+            background-color: green !important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TUNER-LAB</h1>
+    </header>
+    <div class="container">
+        <section id="configuracion">
+            <h2>Configuración del Vehículo</h2>
+
+            <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Puertos COM</title>
+</head>
+<body>
+
+    <h2>Seleccionar Puertos COM</h2>
+
+    <label for="puertos">Elige los puertos COM:</label>
+    <select id="puertos" multiple>
+        <option value="COM1">COM1</option>
+        <option value="COM2">COM2</option>
+        <option value="COM3">COM3</option>
+        <option value="COM4">COM4</option>
+    </select>
+
+    <p id="seleccion">Ningún puerto seleccionado</p>
+
+    <script>
+        document.getElementById('puertos').addEventListener('change', function() {
+            let seleccionados = Array.from(this.selectedOptions).map(option => option.value);
+            document.getElementById('seleccion').textContent = 'Puertos seleccionados: ' + (seleccionados.length ? seleccionados.join(', ') : 'Ninguno');
+        });
+    </script>
+
+</body>
+</html>
+
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" placeholder="Ej: BMW">
+            
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo" placeholder="Ej: M3">
+            
+            <label for="stage">Stage:</label>
+            <select id="stage">
+                <option value="1">Stage 1</option>
+                <option value="2">Stage 2</option>
+                <option value="3">Stage 3</option>
+                <option value="4">Stage 4</option>
+                <option value="5">Stage 5</option>
+            </select>
+            <!DOCTYPE html>
+            <html lang="es">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Seleccionar Archivo ECU</title>
+            </head>
+            <body>
+            
+                <h2>Seleccionar Archivo de ECU</h2>
+            
+                <label for="archivos">Elige un archivo:</label>
+                <select id="archivos">
+                    <option value="">-- Seleccionar --</option>
+                    <option value="archivo1.bin">archivo.bin</option>
+                    <option value="archivo2.hex">archivo.hex</option>
+                    <option value="archivo3.s19">archivo.s19</option>
+                    <option value="archivo4.xdf">archivo.xdf</option>
+                    <option value="archivo5.ori">archivo.ori</option>
+                    <option value="archivo6.mod">archivo.mod</option>
+                </select>
+            
+                <p id="seleccion">Ningún archivo seleccionado</p>
+            
+                <script>
+                    document.getElementById('archivos').addEventListener('change', function() {
+                        let seleccionado = this.value;
+                        document.getElementById('seleccion').textContent = seleccionado ? 'Archivo seleccionado: ' + seleccionado : 'Ningún archivo seleccionado';
+                    });
+                </script>
+            
+            </body>
+            </html>
+            
+            <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Archivo</title>
+</head>
+<body>
+
+    <h2>Seleccionar un Archivo</h2>
+    
+    <input type="file" id="fileInput">
+    <p id="fileName">Ningún archivo seleccionado</p>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            let file = event.target.files[0];
+            if (file) {
+                document.getElementById('fileName').textContent = 'Archivo seleccionado: ' + file.name;
+            } else {
+                document.getElementById('fileName').textContent = 'Ningún archivo seleccionado';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Octanaje</title>
+</head>
+<body>
+
+    <h2>Seleccionar Octanaje del Combustible</h2>
+
+    <label for="octanaje">Elige el nivel de octanaje:</label>
+    <select id="octanaje">
+        <option value="">-- Seleccionar --</option>
+        <option value="87">87 - Regular (Uso normal, menos potencia)</option>
+        <option value="91">91 - Premium (Mejor rendimiento, seguro para turbo)</option>
+        <option value="93">93 - Alto rendimiento (Mayor eficiencia y potencia)</option>
+        <option value="100">100 - Racing (Para motores modificados)</option>
+        <option value="110">110 - Competición (Para motores de carrera)</option>
+        <option value="E85">E85 - Etanol (Mayor potencia, requiere ajuste)</option>
+    </select>
+
+    <p id="seleccion"></p>
+
+    <script>
+        document.getElementById('octanaje').addEventListener('change', function() {
+            let niveles = {
+                "87": "87 - Regular (Uso normal, menos potencia)",
+                "91": "91 - Premium (Mejor rendimiento, seguro para turbo)",
+                "93": "93 - Alto rendimiento (Mayor eficiencia y potencia)",
+                "100": "100 - Racing (Para motores modificados)",
+                "110": "110 - Competición (Para motores de carrera)",
+                "E85": "E85 - Etanol (Mayor potencia, requiere ajuste)"
+            };
+            
+            let seleccionado = this.value;
+            document.getElementById('seleccion').textContent = seleccionado ? 'Octanaje seleccionado: ' + niveles[seleccionado] : 'Ningún octanaje seleccionado';
+        });
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Configuración de Antilag</title>
+</head>
+<body>
+
+    <h2>Seleccionar Configuración de Antilag</h2>
+
+    <label for="antilag">Elige el nivel de antilag:</label>
+    <select id="antilag">
+        <option value="">-- Seleccionar --</option>
+        <option value="0">Desactivado</option>
+        <option value="1">Bajo (Retardo leve, más seguro)</option>
+        <option value="2">Medio (Chispa retrasada y corte moderado)</option>
+        <option value="3">Alto (Explosiones fuertes, mayor consumo)</option>
+        <option value="4">Extremo (Máximo boost, riesgo alto)</option>
+    </select>
+
+    <p id="seleccion"></p>
+
+    <script>
+        document.getElementById('antilag').addEventListener('change', function() {
+            let niveles = {
+                "0": "Desactivado",
+                "1": "Bajo - Retardo leve, más seguro",
+                "2": "Medio - Chispa retrasada y corte moderado",
+                "3": "Alto - Explosiones fuertes, mayor consumo",
+                "4": "Extremo - Máximo boost, riesgo alto"
+            };
+            
+            let seleccionado = this.value;
+            document.getElementById('seleccion').textContent = seleccionado ? 'Antilag seleccionado: ' + niveles[seleccionado] : 'Ninguna configuración seleccionada';
+        });
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Grado de Avance</title>
+</head>
+<body>
+
+    <h2>Seleccionar Grado de Avance de Encendido</h2>
+
+    <label for="avance">Elige los grados de avance (°):</label>
+    <select id="avance">
+        <option value="">-- Seleccionar --</option>
+        <option value="0">0°</option>
+        <option value="5">5°</option>
+        <option value="10">10°</option>
+        <option value="15">15°</option>
+        <option value="20">20°</option>
+        <option value="25">25°</option>
+        <option value="30">30°</option>
+        <option value="35">35°</option>
+        <option value="40">40°</option>
+        <option value="45">45°</option>
+        <option value="50">50°</option>
+    </select>
+
+    <p id="seleccion"></p>
+
+    <script>
+        document.getElementById('avance').addEventListener('change', function() {
+            let seleccionado = this.value;
+            document.getElementById('seleccion').textContent = seleccionado ? 'Grado de avance seleccionado: ' + seleccionado + '°' : 'Ningún grado seleccionado';
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+            
+            <div class="slider-container">
+                <label for="turbo">Turbo (PSI):</label>
+                <input type="range" id="turbo" min="0" max="30" step="1" value="10">
+                <span id="valorTurbo">10 PSI</span>
+            </div>
+
+            <div class="slider-container">
+                <label for="combustible">Combustible (% extra):</label>
+                <input type="range" id="combustible" min="0" max="50" step="1" value="10">
+                <span id="valorCombustible">10%</span>
+            </div>
+
+            <div class="slider-container">
+                <label for="rpm">RPM:</label>
+                <input type="range" id="rpm" min="500" max="8000" step="100" value="3000">
+                <span id="valorRPM">3000 RPM</span>
+            </div>
+
+            <div class="slider-container">
+                <label for="avance">Avance de Encendido (°):</label>
+                <input type="range" id="avance" min="0" max="50" step="1" value="10">
+                <span id="valorAvance">10°</span>
+            </div>
+
+            <div class="slider-container">
+                <label for="mezcla">Mezcla Aire/Combustible (AFR):</label>
+                <input type="range" id="mezcla" min="10" max="18" step="0.1" value="14.7">
+                <span id="valorMezcla">14.7 AFR</span>
+            </div>
+            
+            <button id="btnTuning">Aplicar Tuning</button>
+        </section>
+        
+        <section id="resultado">
+            <h2>Resultados</h2>
+            <p id="output">Configura tu coche y selecciona un Stage.</p>
+           
+        </section>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar">0%</div>
+        </div>
+    </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación HP Tuners</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        table { border-collapse: collapse; margin: 20px auto; font-size: 18px; width: 95%; }
+        th, td { border: 2px solid black; padding: 8px; text-align: center; }
+        .low { background-color: green; color: white; }
+        .medium { background-color: yellow; }
+        .high { background-color: orange; }
+        .very-high { background-color: red; color: white; }
+        canvas { width: 100% !important; height: 600px !important; }
+    </style>
+</head>
+<body>
+    <h2>Tabla de Calibración (RPM vs Avance de Encendido)</h2>
+    <table id="calibrationTable">
+        <thead>
+            <tr>
+                <th>RPM \ Avance (°)</th>
+                <th>5°</th>
+                <th>10°</th>
+                <th>15°</th>
+                <th>20°</th>
+                <th>25°</th>
+                <th>30°</th>
+                <th>35°</th>
+                <th>40°</th>
+                <th>45°</th>
+                <th>50°</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><th>1000</th><td>10</td><td>12</td><td>14</td><td>16</td><td>18</td><td>20</td><td>22</td><td>24</td><td>26</td><td>28</td></tr>
+            <tr><th>2000</th><td>12</td><td>14</td><td>16</td><td>18</td><td>20</td><td>22</td><td>24</td><td>26</td><td>28</td><td>30</td></tr>
+            <tr><th>3000</th><td>14</td><td>16</td><td>18</td><td>20</td><td>22</td><td>24</td><td>26</td><td>28</td><td>30</td><td>32</td></tr>
+            <tr><th>4000</th><td>16</td><td>18</td><td>20</td><td>22</td><td>24</td><td>26</td><td>28</td><td>30</td><td>32</td><td>34</td></tr>
+            <tr><th>5000</th><td>18</td><td>20</td><td>22</td><td>24</td><td>26</td><td>28</td><td>30</td><td>32</td><td>34</td><td>36</td></tr>
+            <tr><th>6000</th><td>20</td><td>22</td><td>24</td><td>26</td><td>28</td><td>30</td><td>32</td><td>34</td><td>36</td><td>38</td></tr>
+            <tr><th>7000</th><td>22</td><td>24</td><td>26</td><td>28</td><td>30</td><td>32</td><td>34</td><td>36</td><td>38</td><td>40</td></tr>
+            <tr><th>8000</th><td>24</td><td>26</td><td>28</td><td>30</td><td>32</td><td>34</td><td>36</td><td>38</td><td>40</td><td>42</td></tr>
+            <tr><th>9000</th><td>26</td><td>28</td><td>30</td><td>32</td><td>34</td><td>36</td><td>38</td><td>40</td><td>42</td><td>44</td></tr>
+            <tr><th>10000</th><td>28</td><td>30</td><td>32</td><td>34</td><td>36</td><td>38</td><td>40</td><td>42</td><td>44</td><td>46</td></tr>
+        </tbody>
+    </table>
+    <button onclick="generateChart()">Generar Gráfica</button>
+    <canvas id="chartCanvas"></canvas>
+    
+    <script>
+        function updateTableColors() {
+            document.querySelectorAll("#calibrationTable td").forEach(cell => {
+                let value = parseInt(cell.textContent);
+                if (value <= 12) cell.className = "low";
+                else if (value <= 18) cell.className = "medium";
+                else if (value <= 26) cell.className = "high";
+                else cell.className = "very-high";
+            });
+        }
+        
+        function generateChart() {
+            let labels = ["1000", "2000", "3000", "4000", "5000", "6000", "7000", "8000", "9000", "10000"];
+            let data = [10, 14, 18, 22, 26, 30, 34, 38, 42, 46];
+            let ctx = document.getElementById("chartCanvas").getContext("2d");
+            new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Avance de Encendido (°)",
+                        data: data,
+                        borderColor: "blue",
+                        fill: false
+                    }]
+                }
+            });
+        }
+        
+        updateTableColors();
+    </script>
+</body>
+</html>
+
+    <script>
+        function startProgress() {
+            let progressBar = document.getElementById("progress-bar");
+            let width = 0;
+            let interval = setInterval(function() {
+                if (width >= 100) {
+                    clearInterval(interval);
+                } else {
+                    width++;
+                    progressBar.style.width = width + "%";
+                    progressBar.textContent = width + "%";
+                }
+            }, 100);
+        }
+        
+        document.getElementById("btnTuning").addEventListener("click", startProgress);
+    </script>
+    <script src="java.js"></script>
+</body>
+</html>
